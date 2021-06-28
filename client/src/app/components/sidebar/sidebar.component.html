@@ -1,0 +1,21 @@
+<nav id="sidebar">
+    <div class="p-4">
+      <ul class="nav flex-column">
+        <!-- <li class="nav-item">
+          <a class="nav-link" routerLink='/admin/dashboard' routerLinkActive="active"><i class="bi bi-house"></i> Dashboard</a>
+        </li> -->
+        <li class="nav-item">
+          <a class="nav-link" [routerLink]="'/admin/products'" routerLinkActive="active"><i class="bi bi-archive"></i> Products</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" [routerLink]="'/admin/category'" routerLinkActive="active"><i class="bi bi-tag-fill"></i> Categories</a>
+        </li>
+        <!-- <li class="nav-item">
+          <a class="nav-link" routerLink='/admin/order-history' routerLinkActive="active"><i class="bi bi-receipt-cutoff"></i> Order History</a>
+        </li> -->
+        <!-- <li class="nav-item">
+          <a class="nav-link" [routerLink]="''" *ngIf="this.authService.user" (click)="logOut()">Sign Out</a>
+        </li> -->
+      </ul>
+    </div>  
+  </nav>

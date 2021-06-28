@@ -1,0 +1,63 @@
+$success: #198754;
+$danger:#dc3545;
+$black: #212529;
+$primary: #1d1919;
+$yellow: #f8b739;
+
+th, tr, .td_btn{
+    text-align: center;
+}
+
+tbody > tr:hover {background-color: #ddd;}
+
+.btn{
+    margin-right: 5px;
+}
+
+.detail-btn{
+    width: 100%;
+    padding: 0;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0 !important;
+}
+
+
+//icon
+.bi{
+    font-size: 2rem; 
+}
+
+.bi-info-circle-fill:hover{
+    cursor: pointer;
+}
+
+.bi-check-circle-fill{
+    color: $yellow;
+}
+
+.bi-x-circle-fill{
+    color: $primary;
+}
+
+//------------HEAD-OF-PAGE----------
+.head-productPage{
+    display: flex;
+    flex-direction: row;
+}
+
+.table{
+    margin: 20px 0 0 0;
+    border-radius: 5px;
+    background-color: white;
+}
+
+.btn-primary{
+    background-color: $primary;
+    border-color: $primary;
+    &:hover{
+        color: $yellow;
+    }
+}

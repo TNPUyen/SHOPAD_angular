@@ -1,0 +1,36 @@
+// .navbar{
+//     margin: 15px 0 10px 0;
+// }
+
+.icons-contain{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    float: right;
+}
+
+.icons{
+    height: 1.5rem;
+    width: 1.5rem;
+}
+
+// number of new noti
+// .badge-danger {
+//     color: #fff;
+//     background-color: #e74a3b;
+// }
+
+.nav-item .nav-link .badge-counter {
+    position: absolute;
+    transform: scale(.7);
+    transform-origin: top right;
+    right: .25rem;
+    margin-top: -.25rem;
+}
+
+.img-profile{
+    vertical-align: middle;
+    border-style: none;
+    height: 2rem;
+    width: 2rem;
+}

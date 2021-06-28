@@ -1,0 +1,57 @@
+<table class="table">
+    <thead>
+      <tr>
+        <th scope="col">Id</th>
+        <th scope="col">Image</th>
+        <th scope="col">Name</th>
+        <th scope="col">Category</th>
+        <th scope="col">Quantity</th>
+        <th scope="col">Price</th>
+        <th scope="col">Priority</th>
+        <th scope="col">Product Status</th>
+        <!-- <th scope="col">Detail</th> -->
+        <th scope="col">Option</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let item of this.items | async">
+        <td>{{item.id}}</td>
+        <td>image</td>
+        <td>{{item.name}}</td>
+        <td>{{item.category}}</td>
+        <td>{{item.quantity}}</td>
+        <td>{{item.price}}</td>
+
+        <!-- priority -->
+        <td *ngIf="item.priority">Best Seller</td>
+        <td *ngIf="!item.priority"></td>
+
+        <!-- product status -->
+        <td *ngIf="item.status && item.quantity != 0"><i class="bi bi-check-circle-fill"></i></td>
+        <td *ngIf="!item.status && item.quantity == 0"><i class="bi bi-x-circle-fill"></i></td>
+
+        <!-- <td class="td_btn"><button class="btn detail-btn"><i class="bi bi-info-circle-fill"></i></button></td> -->
+        <!--option column-->
+        <td>
+          <button type="button" class="btn btn-primary" (click)="open(content, item)">Update</button>
+          <button type="button" class="btn btn-danger" (click)="delete(item)">Delete</button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+
+  <!-- pagination -->
+  <pagination-controls></pagination-controls>
+
+  <!-- update form -->
+  <ng-template #content let-modal>
+    <!-- add new item form modal -->
+    <div class="modal-header">
+      <h5 class="modal-title" id="exampleModalLabel">Edit Product</h5>
+      <button type="button" class="btn-close" aria-label="Close" (click)="modal.dismiss('Cross click')"></button>
+    </div>
+    <div class="modal-body">
+      <app-update-form [itemData]=modalContent></app-update-form>
+    </div>
+
+  </ng-template>
