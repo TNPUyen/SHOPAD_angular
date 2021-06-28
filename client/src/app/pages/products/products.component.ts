@@ -18,7 +18,9 @@ export class ProductsComponent implements OnInit {
 
   totalProduct: any;
   modalContent!: BsModalRef;
-  proname: any;
+  name!: string;
+
+  page:number = 1;
 
   constructor(private fireStore: AngularFirestore, public productService: ProductService, 
     private modalService: BsModalService
@@ -32,6 +34,8 @@ export class ProductsComponent implements OnInit {
     // set document id => idField: idDoc
     this.items = this.itemCollection.valueChanges({ idField: 'idDoc' });
     this.items.subscribe(data=> {this.totalProduct = data.length, this.itemList = data});
+    this.itemListFilter = this.itemList
+
   }
 
   delete(item: any){
@@ -46,19 +50,19 @@ export class ProductsComponent implements OnInit {
   }
 
   search(){
-    if(this.proname == ""){
+    // this.itemListFilter = this.itemList
+    // this.itemListFilter = []
+    if(this.name == ""){
       this.ngOnInit();
-      console.log("51: ",this.items)
-
     }else{
-    console.log("54: ",this.itemList)
-    this.itemListFilter = this.itemList
-
+      
+      console.log('vô')
       this.itemListFilter = this.itemListFilter?.filter(res => {
-        return res.name?.toLocaleLowerCase().match(this.proname.toLocaleLowerCase())
+        return res.name.toLocaleLowerCase().match(this.name.toLocaleLowerCase())
       });
-      console.log("58: ",this.itemListFilter)
       this.items?.subscribe(data => {data = this.itemListFilter, console.log(data)}) ;
+    console.log(this.itemListFilter)
+
     }
   }
 }

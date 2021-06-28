@@ -1,5 +1,5 @@
-<nav class="navbar">>
-  <input class="form-control" type="text" name="name" [(ngModel)]="proname" (ngModelChange)="search()" placeholder="Enter product Name">
+<nav class="navbar">
+  <input class="form-control" type="text"  [(ngModel)]="name" (ngModelChange)="search()" placeholder="Enter product Name">
 </nav>
 
 <table class="table">
@@ -18,7 +18,7 @@
       </tr>
     </thead>
     <tbody>
-      <tr *ngFor="let item of items | async">
+      <tr *ngFor="let item of items | async  |filter:name | paginate: {itemsPerPage: 5, currentPage: page}">
         <td>{{item.id}}</td>
         <td>image</td>
         <td>{{item.name}}</td>
@@ -45,7 +45,7 @@
   </table>
 
   <!-- pagination -->
-  <pagination-controls></pagination-controls>
+  <pagination-controls (pageChange)="page = $event"></pagination-controls>
 
   <!-- update form -->
   <ng-template #template>
