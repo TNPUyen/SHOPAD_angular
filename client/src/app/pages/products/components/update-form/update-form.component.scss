@@ -1,0 +1,18 @@
+.content{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.content-1{
+    height: 15rem;
+}
+
+.form-label{
+    margin-bottom: 0.25rem;
+}
+
+.image_preview{
+    display: flex;
+    flex-direction: column;
+}

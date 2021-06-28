@@ -1,1 +1,76 @@
-<p>update-form works!</p>
+<div class="modal-header">
+  <h5 class="modal-title" id="exampleModalLabel">Edit Product</h5>
+  <button type="button" class="close pull-right" aria-label="Close" (click)="bsModalRef.hide()">
+    <span aria-hidden="true">&times;</span>
+  </button>
+</div>
+<div class="modal-body">
+  <form [formGroup]="editItemForm">
+    <div class="content content-1">
+      <div class="col-5">
+        <div class="mb-2">
+          <label for="exampleFormControlInput1" class="form-label">Product Id</label>
+          <input type="text" class="form-control" id="exampleFormControlInput1" formControlName="id" placeholder="HD01">
+          <div
+            *ngIf="editItemForm.controls.id.invalid && (editItemForm.controls.id.dirty ||editItemForm.controls.id.touched)">
+            <small *ngIf="editItemForm.controls.id.errors.required" class="text-danger">Id is required.</small>
+          </div>
+        </div>
+        <div class="mb-2">
+          <label for="exampleFormControlInput1" class="form-label">Product Name</label>
+          <input type="text" class="form-control" id="exampleFormControlInput1" formControlName="name"
+            placeholder="Basic Hoodie">
+          <div
+            *ngIf="editItemForm.controls.name.invalid && (editItemForm.controls.name.dirty ||editItemForm.controls.name.touched)">
+            <small *ngIf="editItemForm.controls.name.errors.required" class="text-danger">Prodcut name is
+              required.</small>
+          </div>
+        </div>
+        <div class="mb-2">
+          <label for="exampleFormControlInput1" class="form-label">Category</label>
+          <input type="text" class="form-control" id="exampleFormControlInput1" formControlName="category"
+            placeholder="Hoodie">
+          <div
+            *ngIf="editItemForm.controls.category.invalid && (editItemForm.controls.category.dirty ||editItemForm.controls.category.touched)">
+            <small *ngIf="editItemForm.controls.category.errors.required" class="text-danger">Category is
+              required.</small>
+          </div>
+        </div>
+      </div>
+      <!-- product's image -->
+      <div class="mb-2 col-6 image_preview">
+        <label for="exampleFormControlInput1" class="form-label">Product Image</label>
+        <!-- <input type="image" class="form-control" id="exampleFormControlInput1"  placeholder="HD01"> -->
+        <img [src]="img" alt="">
+      </div>
+    </div>
+    <!-- quantity and price -->
+    <div class="content content-2">
+      <div class="mb-2 col-5">
+        <label for="exampleFormControlInput1" class="form-label">Quantity</label>
+        <input type="number" min="0" class="form-control" id="exampleFormControlInput1" formControlName="quantity">
+        <div
+          *ngIf="editItemForm.controls.quantity.invalid && (editItemForm.controls.quantity.dirty ||editItemForm.controls.quantity.touched)">
+          <small *ngIf="editItemForm.controls.quantity.errors.required" class="text-danger">Quantity is
+            required.</small>
+        </div>
+      </div>
+      <div class="mb-2 col-5">
+        <label for="exampleFormControlInput1" class="form-label">Unit Price</label>
+        <input type="number" min="0" class="form-control" id="exampleFormControlInput1" formControlName="price">
+        <div
+          *ngIf="editItemForm.controls.price.invalid && (editItemForm.controls.price.dirty ||editItemForm.controls.price.touched)">
+          <small *ngIf="editItemForm.controls.price.errors.required" class="text-danger">Unit price is required.</small>
+        </div>
+      </div>
+    </div>
+    <div class="mb-2">
+      <label for="exampleFormControlInput1" class="form-label">Description</label>
+      <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="Please describe your product.">
+    </div>
+    <div class="modal-footer">
+      <button type="button" class="btn btn-primary" [disabled]="editItemForm.invalid" (click)="onSubmit()">Save</button>
+      <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+    </div>
+  </form>
+</div>

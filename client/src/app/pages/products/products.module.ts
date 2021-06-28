@@ -4,8 +4,10 @@ import { CommonModule } from '@angular/common';
 import { ProductsRoutingModule } from './products-routing.module';
 import { ProductsComponent } from './products.component';
 import { UpdateFormComponent } from './components/update-form/update-form.component';
+import { ShareModule } from 'src/app/modules/share.module';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { ModalModule } from 'ngx-bootstrap/modal';
 
-import {NgxPaginationModule} from 'ngx-pagination';
 
 @NgModule({
   declarations: [
@@ -15,7 +17,9 @@ import {NgxPaginationModule} from 'ngx-pagination';
   imports: [
     CommonModule,
     ProductsRoutingModule,
-    NgxPaginationModule
+    ShareModule,
+    ModalModule.forRoot(),
+
   ]
 })
 export class ProductsModule { }
