@@ -5,9 +5,11 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { NgxPaginationModule } from 'ngx-pagination';
 import { Ng2SearchPipeModule } from 'ng2-search-filter';
 import { ModalModule } from 'ngx-bootstrap/modal';
+import { SortDirective } from 'src/app/directive/sort.directive';
+
 
 @NgModule({
-  declarations: [],
+  declarations: [SortDirective],
   imports: [
     CommonModule,
     FormsModule,
@@ -22,7 +24,7 @@ import { ModalModule } from 'ngx-bootstrap/modal';
     ReactiveFormsModule,
     NgxPaginationModule,
     Ng2SearchPipeModule,
-    
+    SortDirective
   ]
 })
 export class ShareModule { }

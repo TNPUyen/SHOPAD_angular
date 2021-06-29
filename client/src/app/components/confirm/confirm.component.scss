@@ -1,0 +1,14 @@
+$yellow: #f8b739;
+$dark-yellow: #eeac28;
+
+.confirm{
+    background-color: $yellow;
+    color: white;
+    &:hover{
+        background-color: $dark-yellow;
+    }
+}
+
+.button-group{
+    text-align: end;
+}

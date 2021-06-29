@@ -27,3 +27,45 @@ $light-yellow: #ffdd93;
         ;
     }
 }
+
+.add_btn{
+    font-weight: bold;
+    color: white;
+    background-color: $yellow;
+    border-color: $yellow;
+    &:hover{
+        // color: $primary;
+        background-color: $dark-yellow;
+        ;
+    }
+}
+
+//custom footer of the page
+.table-footer{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+
+    select{
+        margin-right: 2.75rem;
+        border-radius: 5px;
+
+        option:hover{
+            background-color: $yellow !important;
+        }
+    }
+}
+
+//pagination custom
+.my-pagination ::ng-deep .ngx-pagination{
+    color: $black;
+}
+
+.my-pagination ::ng-deep .ngx-pagination .current {
+    background: $yellow;
+}
+
+.my-pagination ::ng-deep .ngx-pagination a:hover {
+    background: $light-yellow;
+    text-decoration: none;
+}

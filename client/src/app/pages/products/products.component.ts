@@ -6,6 +6,7 @@ import { AngularFirestore, AngularFirestoreCollection,} from '@angular/fire/fire
 import { BsModalRef,BsModalService } from 'ngx-bootstrap/modal';
 import { UpdateFormComponent } from './components/update-form/update-form.component';
 import { AddFormComponent } from './components/add-form/add-form.component';
+import { ApiCategoriesService } from 'src/app/services/api-categories.service';
 @Component({
   selector: 'app-products',
   templateUrl: './products.component.html',
@@ -31,7 +32,7 @@ export class ProductsComponent implements OnInit {
   message!:string;
   isSuccess: boolean = false;
 
-  constructor(private fireStore: AngularFirestore, public productService: ProductService, private modalService: BsModalService) { 
+  constructor(private fireStore: AngularFirestore, public productService: ProductService, private modalService: BsModalService, private categoryService: ApiCategoriesService) { 
   }
 
   ngOnInit(): void {

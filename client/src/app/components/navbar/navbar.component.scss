@@ -4,14 +4,21 @@
 
 .icons-contain{
     display: flex;
-    justify-content: space-around;
+    justify-content: space-between;
     align-items: center;
-    float: right;
 }
 
 .icons{
     height: 1.5rem;
     width: 1.5rem;
+}
+
+.info{
+    display: flex;
+    flex-direction: row;
+    p{
+        margin: 0;
+    }
 }
 
 // number of new noti

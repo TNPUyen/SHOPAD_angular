@@ -8,23 +8,28 @@ import { SidebarComponent } from './components/sidebar/sidebar.component';
 
 import { environment } from 'src/environments/environment';
 import { AngularFireModule } from '@angular/fire';
-import {AngularFirestoreModule} from '@angular/fire/firestore';
+import { AngularFirestoreModule } from '@angular/fire/firestore';
+import { AngularFireStorageModule } from '@angular/fire/storage';
 import { HttpClientModule } from '@angular/common/http';
+import { ConfirmComponent } from './components/confirm/confirm.component';
+import { ShareModule } from './modules/share.module';
 @NgModule({
   declarations: [
     AppComponent,
     NavbarComponent,
     SidebarComponent,
+    ConfirmComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     AngularFireModule.initializeApp(environment.firebase),
     AngularFirestoreModule,
-    HttpClientModule
-
+    AngularFireStorageModule,
+    HttpClientModule,
+    ShareModule,
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}

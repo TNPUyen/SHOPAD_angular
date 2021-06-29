@@ -19,6 +19,7 @@ export class ApiCategoriesService {
   //   list = await this.httpClient.get(environment.endpoint + 'api/getAllCategories').toPromise();
   //   return list['categoriesList'];
   // }
+  
 
   async createCategory(id:string, name:string){
     let message: any = {}

@@ -1,1 +1,38 @@
-<p>sign-in works!</p>
+<div class="limiter content">
+  <div class="container-login100">
+    <div class="wrap-login100">
+      <div class="col-7 img-content ">
+        <img class="img" src="../../../assets/Account.gif" alt="Card image cap">
+      </div>
+      <div class="col-4  form-content">
+        <div style="width: 100%; display: flex;  flex-direction: column; text-align: center;">
+          <h1>The SHOPAD</h1>
+          <form [formGroup]="signForm" class="form">
+            <div>
+              <input type="text" formControlName="email" placeholder="Email" class="mt-2 form-control">
+              <div
+                *ngIf="signForm.controls.email.invalid && (signForm.controls.email.dirty ||signForm.controls.email.touched)">
+                <small *ngIf="signForm.controls.email.errors.required" class="text-danger">Email is required.</small>
+              </div>
+            </div>
+  
+            <div>
+              <input type="password" formControlName="password" placeholder="Password" class="mt-2 form-control">
+              <div
+                *ngIf="signForm.controls.password.invalid && (signForm.controls.password.dirty ||signForm.controls.password.touched)">
+                <small *ngIf="signForm.controls.password.errors.required" class="text-danger">Password is
+                  required.</small>
+              </div>
+            </div>
+            <div style="display:flex; justify-content: end; width: 100%; text-align: end;">
+              <button type="btn" class="btn btn-primary mt-2" (click)="signInWithEmail()">Sign in</button>
+            </div>
+          </form>
+          <hr>
+          <button type="btn" class="btn loginGG" (click)="signInWithGG()">Login with Google</button>
+          <p class="mt-4">Don't have an account? <a routerLink='/register' style="color: #eeac28; font-weight: bold;">Get it here!</a></p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

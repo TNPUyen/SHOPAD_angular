@@ -2,6 +2,7 @@ import { Component, EventEmitter, OnInit } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import { BsModalRef } from 'ngx-bootstrap/modal';
 import { ProductClass } from 'src/app/models/product.model';
+import { ApiCategoriesService } from 'src/app/services/api-categories.service';
 import { ProductService } from 'src/app/services/product.service';
 
 @Component({
@@ -18,7 +19,7 @@ export class AddFormComponent implements OnInit {
 
   message!:string;
   alert:boolean = false;
-  constructor(private formBuilder: FormBuilder, public bsModalRef: BsModalRef, private productService: ProductService) { }
+  constructor(private formBuilder: FormBuilder, public bsModalRef: BsModalRef, private productService: ProductService, ) { }
 
   ngOnInit(): void {
     this.addItemForm = this.formBuilder.group({
@@ -28,7 +29,7 @@ export class AddFormComponent implements OnInit {
       quantity:['', Validators.required],
       price:['', Validators.required],
       description:['',],
-    })
+    });
   }
 
   async onSubmit(){

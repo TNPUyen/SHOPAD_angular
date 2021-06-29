@@ -1,11 +1,20 @@
-<nav class="navbar navbar-light bg-light">
+<nav class="navbar navbar-light bg-light" *ngIf="this.userService.user">
   <div class="container">
-    <div class="icons-contain col-1">
+    <div class="icons-contain col-12">
       <div class="">
-        <img class="icons" src="assets/icons/noti.svg">
-        <!-- <span class="badge badge-danger badge-counter">3+</span> -->
+        <div></div>
       </div>
-      <img class="img-profile rounded-circle" src="assets/undraw_profile.svg">
+      <div class="info" *ngIf="this.userService.user.photoURL">
+        <strong class="mr-3">{{this.userService.user.displayName}}</strong>
+        <img class="img-profile rounded-circle" [src]="this.userService.user.photoURL">
+        <!-- <img class="img-profile rounded-circle" *ngIf="!this.userService.user.photoURL" [src]="'assets/undraw_profile.svg'"> -->
+      </div>
+      <div class="info" *ngIf="!this.userService.user.photoURL">
+        <strong class="mr-3">{{this.userService.user.email}}</strong>
+        <!-- <img class="img-profile rounded-circle" *ngIf="this.userService.user.photoURL" [src]="this.userService.user.photoURL"> -->
+        <img class="img-profile rounded-circle" [src]="'assets/undraw_profile.svg'">
+      </div>
+
     </div>
   </div>
 </nav>

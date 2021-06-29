@@ -19,6 +19,9 @@ export class CategoryComponent implements OnInit {
   categories!: Observable<any>;
   categoryList!: Category[];
 
+  page:number = 1;
+  itemPerPage:number = 6;
+
   alert:boolean = false;
   message!:string;
   isSuccess: boolean = false;

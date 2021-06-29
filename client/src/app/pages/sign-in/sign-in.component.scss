@@ -1,0 +1,95 @@
+$gg-red: #EB4132;
+$gg-dark-red: #db3d2f;
+$primary: #1d1919;
+
+.btn{
+    width: 100%;
+}
+
+.loginGG {
+  background-color: $gg-red;
+  color: white;
+
+  &:hover {
+    background-color: $gg-dark-red;
+  }
+}
+
+hr{
+    border: 0;
+    clear:both;
+    display:block;
+    width: 96%;               
+    background-color: #e4e4e4;
+    height: 1px;
+}
+
+.content {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+
+.img {
+  width: 35rem;
+}
+
+.form-content {
+    display: flex;
+    flex-direction: column;
+  justify-content: center;
+}
+
+.form {
+  width: 100%;
+
+  input {
+    width: 100%;
+  }
+}
+
+.limiter {
+  width: 100%;
+  margin: 0 auto;
+}
+
+.container-login100 {
+  width: 100%;
+  min-height: 100vh;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+//   padding: 15px;
+  background: $primary;
+  background: -webkit-linear-gradient(-135deg, #c850c0, #4158d0);
+  background: -o-linear-gradient(-135deg, #c850c0, #4158d0);
+  background: -moz-linear-gradient(-135deg, #c850c0, #4158d0);
+  background: linear-gradient(-135deg, #c850c0, #4158d0);
+//   background: -webkit-linear-gradient(-135deg, $primary, $yellow);
+//   background: -o-linear-gradient(-135deg, $primary, $yellow);
+//   background: -moz-linear-gradient(-135deg, $primary, $yellow);
+//   background: linear-gradient(-135deg, $primary, $yellow);
+}
+
+.wrap-login100 {
+    width: 70%;
+    background: #fff;
+    border-radius: 10px;
+    overflow: hidden;
+  
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: flex;
+    // flex-wrap: wrap;
+    // justify-content: space-between;
+    // padding: 177px 130px 33px 95px;
+  }
+
+  

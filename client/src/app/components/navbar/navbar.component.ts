@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { UserService } from 'src/app/services/user.service';
 
 @Component({
   selector: 'app-navbar',
@@ -6,10 +7,14 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./navbar.component.scss']
 })
 export class NavbarComponent implements OnInit {
+  image:string = 'assets/undraw_profile.svg';
 
-  constructor() { }
+  constructor(public userService: UserService) { 
+
+  }
 
   ngOnInit(): void {
   }
+
 
 }

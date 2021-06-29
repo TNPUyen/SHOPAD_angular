@@ -1,1 +1,46 @@
-<p>register works!</p>
+<div class="limiter content">
+  <div class="container-login100">
+    <div class="wrap-login100">
+      <div class="col-7 img-content ">
+        <img class="img" src="../../../assets/Account.gif" alt="Card image cap">
+      </div>
+      <div class="col-4  form-content">
+        <div style="width: 100%; display: flex;  flex-direction: column; text-align: center;">
+          <h1>The SHOPAD</h1>
+          <form [formGroup]="registerForm" class="form">
+            <div>
+              <input type="text" formControlName="email" placeholder="Email" class="mt-2 form-control">
+              <div
+                *ngIf="registerForm.controls.email.invalid && (registerForm.controls.email.dirty ||registerForm.controls.email.touched)">
+                <small *ngIf="registerForm.controls.email.errors.required" class="text-danger">Email is
+                  required.</small>
+              </div>
+            </div>
+
+            <div>
+              <input type="password" formControlName="password" placeholder="Password" class="mt-2 form-control">
+              <div
+                *ngIf="registerForm.controls.password.invalid && (registerForm.controls.password.dirty ||registerForm.controls.password.touched)">
+                <small *ngIf="registerForm.controls.password.errors.required" class="text-danger">Password is
+                  required.</small>
+              </div>
+            </div>
+
+            <div>
+              <input type="password" formControlName="confirmpassword" placeholder="Confirm password" class="mt-2 form-control">
+              <div
+                *ngIf="registerForm.controls.confirmpassword.invalid && (registerForm.controls.confirmpassword.dirty ||registerForm.controls.confirmpassword.touched)">
+                <small *ngIf="registerForm.controls.confirmpassword.errors.required" class="text-danger">Confirm
+                  password is required.</small>
+              </div>
+            </div>
+            <button type="btn" class="btn btn-primary mt-2" (click)="register()">Register</button>
+          </form>
+          <hr>
+          <p class="mt-2">Already have an account? <a routerLink='' style="color: #eeac28; font-weight: bold;">Sign in
+              here!</a></p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

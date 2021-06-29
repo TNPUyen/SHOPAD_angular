@@ -5,7 +5,7 @@ import { ProductsRoutingModule } from './products-routing.module';
 import { ProductsComponent } from './products.component';
 import { UpdateFormComponent } from './components/update-form/update-form.component';
 import { ShareModule } from 'src/app/modules/share.module';
-import { SortDirective } from 'src/app/directive/sort.directive';
+// import { SortDirective } from 'src/app/directive/sort.directive';
 import { AddFormComponent } from './components/add-form/add-form.component';
 
 
@@ -13,7 +13,7 @@ import { AddFormComponent } from './components/add-form/add-form.component';
   declarations: [
     ProductsComponent,
     UpdateFormComponent,
-    SortDirective,
+    // SortDirective,
     AddFormComponent
   ],
   imports: [
