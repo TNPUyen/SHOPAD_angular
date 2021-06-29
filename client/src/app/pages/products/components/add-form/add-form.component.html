@@ -1,0 +1,77 @@
+<div class="modal-header">
+    <h5 class="modal-title" id="exampleModalLabel">Add new product</h5>
+    <button type="button" class="close pull-right" aria-label="Close" (click)="bsModalRef.hide()">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    <form [formGroup]="addItemForm">
+      <div class="content content-1">
+        <div class="col-5">
+          <div class="mb-2">
+            <label for="exampleFormControlInput1" class="form-label">Product Id</label>
+            <input type="text" class="form-control" id="exampleFormControlInput1" formControlName="id" placeholder="HD01">
+            <div
+              *ngIf="addItemForm.controls.id.invalid && (addItemForm.controls.id.dirty ||addItemForm.controls.id.touched)">
+              <small *ngIf="addItemForm.controls.id.errors.required" class="text-danger">Id is required.</small>
+            </div>
+          </div>
+          <div class="mb-2">
+            <label for="exampleFormControlInput1" class="form-label">Product Name</label>
+            <input type="text" class="form-control" id="exampleFormControlInput1" formControlName="name"
+              placeholder="Basic Hoodie">
+            <div
+              *ngIf="addItemForm.controls.name.invalid && (addItemForm.controls.name.dirty ||addItemForm.controls.name.touched)">
+              <small *ngIf="addItemForm.controls.name.errors.required" class="text-danger">Prodcut name is
+                required.</small>
+            </div>
+          </div>
+          <div class="mb-2">
+            <label for="exampleFormControlInput1" class="form-label">Category</label>
+            <input type="text" class="form-control" id="exampleFormControlInput1" formControlName="category"
+              placeholder="Hoodie">
+            <div
+              *ngIf="addItemForm.controls.category.invalid && (addItemForm.controls.category.dirty ||addItemForm.controls.category.touched)">
+              <small *ngIf="addItemForm.controls.category.errors.required" class="text-danger">Category is
+                required.</small>
+            </div>
+          </div>
+        </div>
+        <!-- product's image -->
+        <div class="mb-2 col-6 image_preview">
+          <label for="exampleFormControlInput1" class="form-label">Product Image</label>
+          <!-- <input type="image" class="form-control" id="exampleFormControlInput1"  placeholder="HD01"> -->
+          <img [src]="img" alt="">
+        </div>
+      </div>
+      <!-- quantity and price -->
+      <div class="content content-2">
+        <div class="mb-2 col-5">
+          <label for="exampleFormControlInput1" class="form-label">Quantity</label>
+          <input type="number" min="0" class="form-control" id="exampleFormControlInput1" formControlName="quantity">
+          <div
+            *ngIf="addItemForm.controls.quantity.invalid && (addItemForm.controls.quantity.dirty ||addItemForm.controls.quantity.touched)">
+            <small *ngIf="addItemForm.controls.quantity.errors.required" class="text-danger">Quantity is
+              required.</small>
+          </div>
+        </div>
+        <div class="mb-2 col-5">
+          <label for="exampleFormControlInput1" class="form-label">Unit Price</label>
+          <input type="number" min="0" class="form-control" id="exampleFormControlInput1" formControlName="price">
+          <div
+            *ngIf="addItemForm.controls.price.invalid && (addItemForm.controls.price.dirty ||addItemForm.controls.price.touched)">
+            <small *ngIf="addItemForm.controls.price.errors.required" class="text-danger">Unit price is required.</small>
+          </div>
+        </div>
+      </div>
+      <div class="mb-2">
+        <label for="exampleFormControlInput1" class="form-label">Description</label>
+        <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="Please describe your product.">
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-primary" [disabled]="addItemForm.invalid" (click)="onSubmit()">Save</button>
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+      </div>
+    </form>
+  </div>
+  

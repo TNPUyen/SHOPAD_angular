@@ -2,7 +2,12 @@ $success: #198754;
 $danger:#dc3545;
 $black: #212529;
 $primary: #1d1919;
+$dark-primary: #131010;
+
 $yellow: #f8b739;
+$dark-yellow: #eeac28;
+
+$light-yellow: #ffdd93;
 
 th, tr, .td_btn{
     text-align: center;
@@ -54,10 +59,56 @@ tbody > tr:hover {background-color: #ddd;}
     background-color: white;
 }
 
-.btn-primary{
+//custom btn
+.update_btn{
+    color: white;
     background-color: $primary;
     border-color: $primary;
     &:hover{
-        color: $yellow;
+        // color: $primary;
+        background-color: $dark-primary;
+        ;
     }
+}
+
+.add_btn{
+    font-weight: bold;
+    color: white;
+    background-color: $yellow;
+    border-color: $yellow;
+    &:hover{
+        // color: $primary;
+        background-color: $dark-yellow;
+        ;
+    }
+}
+
+//custom footer of the page
+.table-footer{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+
+    select{
+        margin-right: 2.75rem;
+        border-radius: 5px;
+
+        option:hover{
+            background-color: $yellow !important;
+        }
+    }
+}
+
+//pagination custom
+.my-pagination ::ng-deep .ngx-pagination{
+    color: $black;
+}
+
+.my-pagination ::ng-deep .ngx-pagination .current {
+    background: $yellow;
+}
+
+.my-pagination ::ng-deep .ngx-pagination a:hover {
+    background: $light-yellow;
+    text-decoration: none;
 }

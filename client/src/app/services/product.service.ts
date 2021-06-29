@@ -22,14 +22,18 @@ export class ProductService {
       priority: false,
     }).then((data) => {
       console.log(data)
-      alert(`Add new Product successful ${data.id}`)
+      alert(`Add new Product successful ${data.get()}`)
     });
   }
 
   update(itemIdoc:string, editData: any) {
     let status = true;
+    let priority = false;
     if (editData.quantity == 0){
       status = false;
+    }
+    if(editData.priority == true){
+      priority = true;
     }
     this.fireStore.collection('items').doc(itemIdoc).set({
       id: editData.id,
@@ -39,7 +43,7 @@ export class ProductService {
       quantity: editData.quantity,
       status: status,
       price: editData.price,
-      priority: false,
+      priority: priority,
     })
   }
 

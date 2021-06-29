@@ -9,13 +9,15 @@ import { SidebarComponent } from './components/sidebar/sidebar.component';
 import { environment } from 'src/environments/environment';
 import { AngularFireModule } from '@angular/fire';
 import {AngularFirestoreModule} from '@angular/fire/firestore';
+// import { SortDirective } from './directive/sort.directive';
 // import { ModalModule } from 'ngx-bootstrap/modal';
 // import { ShareModule } from './modules/share.module';
 @NgModule({
   declarations: [
     AppComponent,
     NavbarComponent,
-    SidebarComponent
+    SidebarComponent,
+    // SortDirective
   ],
   imports: [
     BrowserModule,

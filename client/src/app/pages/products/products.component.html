@@ -1,63 +1,65 @@
-<nav class="navbar">
-  <input class="form-control" type="text"  [(ngModel)]="name" (ngModelChange)="search()" placeholder="Enter product Name">
-</nav>
-
-<table class="table">
-    <thead>
-      <tr>
-        <th scope="col">Id</th>
-        <th scope="col">Image</th>
-        <th scope="col">Name</th>
-        <th scope="col">Category</th>
-        <th scope="col">Quantity</th>
-        <th scope="col">Price</th>
-        <th scope="col">Priority</th>
-        <th scope="col">Product Status</th>
-        <!-- <th scope="col">Detail</th> -->
-        <th scope="col">Option</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr *ngFor="let item of items | async  |filter:name | paginate: {itemsPerPage: 5, currentPage: page}">
-        <td>{{item.id}}</td>
-        <td>image</td>
-        <td>{{item.name}}</td>
-        <td>{{item.category}}</td>
-        <td>{{item.quantity}}</td>
-        <td>{{item.price}}</td>
-
-        <!-- priority -->
-        <td *ngIf="item.priority">Best Seller</td>
-        <td *ngIf="!item.priority"></td>
-
-        <!-- product status -->
-        <td *ngIf="item.status && item.quantity != 0"><i class="bi bi-check-circle-fill"></i></td>
-        <td *ngIf="!item.status && item.quantity == 0"><i class="bi bi-x-circle-fill"></i></td>
-
-        <!-- <td class="td_btn"><button class="btn detail-btn"><i class="bi bi-info-circle-fill"></i></button></td> -->
-        <!--option column-->
-        <td>
-          <button type="button" class="btn btn-primary" (click)="open(item)">Update</button>
-          <button type="button" class="btn btn-danger" (click)="delete(item)">Delete</button>
-        </td>
-      </tr>
-    </tbody>
-  </table>
-
-  <!-- pagination -->
-  <pagination-controls (pageChange)="page = $event"></pagination-controls>
-
-  <!-- update form -->
-  <ng-template #template>
-    <!-- add new item form modal -->
-    <div class="modal-header">
-      <h5 class="modal-title" id="exampleModalLabel">Edit Product</h5>
-      <button type="button" class="close pull-right" aria-label="Close" (click)="modalContent.hide()">
-        <span aria-hidden="true">&times;</span>
-      </button>
-    </div>
-    <div class="modal-body">
-      <app-update-form></app-update-form>
+<div style="width: 100%; display: flex; justify-content: center;">
+  <div style="width: 98%; height:100%; ">
+    <div class="head-productPage mt-2">
+      <nav class="navbar">
+        <input class="form-control" type="text" [(ngModel)]="name" (ngModelChange)="search()"
+          placeholder="Enter product Name">
+      </nav>
+      <button class="btn add_btn" (click)="openAdd()">Add product</button>
     </div>
 
-  </ng-template>
+    <table class="table">
+      <thead>
+        <tr>
+          <th scope="col" [appSort]="itemList" data-order="desc" data-name="id" ><i ></i>Id</th>
+          <th scope="col">Image</th>
+          <th scope="col" [appSort]="itemList" data-order="desc" data-name="name">Name</th>
+          <th scope="col" [appSort]="itemList" data-order="desc" data-name="category">Category</th>
+          <th scope="col" [appSort]="itemList" data-order="desc" data-name="quantity">Quantity</th>
+          <th scope="col" [appSort]="itemList" data-order="desc" data-name="price">Price</th>
+          <th scope="col">Priority</th>
+          <th scope="col">Product Status</th>
+          <!-- <th scope="col">Detail</th> -->
+          <th scope="col">Option</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let item of itemList |filter:name | paginate: {itemsPerPage: itemPerPage, currentPage: page}">
+          <td>{{item.id}}</td>
+          <td>image</td>
+          <td>{{item.name}}</td>
+          <td>{{item.category}}</td>
+          <td>{{item.quantity}}</td>
+          <td>{{item.price}}</td>
+
+          <!-- priority -->
+          <td *ngIf="item.priority">Best Seller</td>
+          <td *ngIf="!item.priority"></td>
+
+          <!-- product status -->
+          <td *ngIf="item.status && item.quantity != 0"><i class="bi bi-check-circle-fill"></i></td>
+          <td *ngIf="!item.status && item.quantity == 0"><i class="bi bi-x-circle-fill"></i></td>
+
+          <!-- <td class="td_btn"><button class="btn detail-btn"><i class="bi bi-info-circle-fill"></i></button></td> -->
+          <!--option column-->
+          <td>
+            <button type="button" class="btn update_btn" (click)="openUpdate(item)">Update</button>
+            <button type="button" class="btn btn-danger" (click)="delete(item)">Delete</button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+
+    <!-- pagination -->
+    <!-- mt: margin top -->
+    <div class="table-footer mt-2">
+      <pagination-controls class="my-pagination" (pageChange)="page = $event"></pagination-controls>
+      <select class="selectpicker show-tick" [(ngModel)]="itemPerPage">
+        <option value="4">4 items per page</option>
+        <option value="5">5 items per page</option>
+        <option value="6">6 items per page</option>
+      </select>
+    </div>
+  </div>
+</div>
+

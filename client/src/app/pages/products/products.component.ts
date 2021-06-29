@@ -5,22 +5,25 @@ import { ProductService } from 'src/app/services/product.service';
 import { AngularFirestore, AngularFirestoreCollection,} from '@angular/fire/firestore';
 import { BsModalRef,BsModalService } from 'ngx-bootstrap/modal';
 import { UpdateFormComponent } from './components/update-form/update-form.component';
+import { AddFormComponent } from './components/add-form/add-form.component';
 @Component({
   selector: 'app-products',
   templateUrl: './products.component.html',
   styleUrls: ['./products.component.scss']
 })
 export class ProductsComponent implements OnInit {
-  itemCollection: AngularFirestoreCollection<ProductClass> | undefined;
-  items: Observable<any> | undefined;
-  itemList: ProductClass[] | undefined;
-  itemListFilter: ProductClass[] | undefined;
+  itemCollection!: AngularFirestoreCollection<ProductClass>;
+  items!: Observable<any>;
+  itemList!: ProductClass[];
+  itemListFilter!: ProductClass[];
 
   totalProduct: any;
   modalContent!: BsModalRef;
   name!: string;
+  sortIcon: string = 'bi bi-caret-down-fill'
 
   page:number = 1;
+  itemPerPage:number = 6;
 
   constructor(private fireStore: AngularFirestore, public productService: ProductService, 
     private modalService: BsModalService
@@ -34,35 +37,35 @@ export class ProductsComponent implements OnInit {
     // set document id => idField: idDoc
     this.items = this.itemCollection.valueChanges({ idField: 'idDoc' });
     this.items.subscribe(data=> {this.totalProduct = data.length, this.itemList = data});
-    this.itemListFilter = this.itemList
-
   }
 
   delete(item: any){
     this.productService.delete(item);
   }
   
-  open(item:any,){
+  // open update form
+  openUpdate(item:any,){
     //khởi tạo biến để truyền vào ngx-bootstrap modal
     const initialState = {item: item}
     this.modalContent = this.modalService.show(UpdateFormComponent, {initialState});
     this.modalContent.content.closeBtnName = 'Close'; 
   }
 
+  openAdd(){
+    //khởi tạo biến để truyền vào ngx-bootstrap modal
+    this.modalContent = this.modalService.show(AddFormComponent);
+    this.modalContent.content.closeBtnName = 'Close'; 
+  }
+
+  // filter by product name
   search(){
-    // this.itemListFilter = this.itemList
-    // this.itemListFilter = []
     if(this.name == ""){
       this.ngOnInit();
     }else{
-      
-      console.log('vô')
-      this.itemListFilter = this.itemListFilter?.filter(res => {
+      this.itemList = this.itemList?.filter(res => {
         return res.name.toLocaleLowerCase().match(this.name.toLocaleLowerCase())
       });
-      this.items?.subscribe(data => {data = this.itemListFilter, console.log(data)}) ;
-    console.log(this.itemListFilter)
-
     }
   }
+
 }
