@@ -9,12 +9,15 @@ import { ProductService } from 'src/app/services/product.service';
   styleUrls: ['./update-form.component.scss']
 })
 export class UpdateFormComponent implements OnInit {
-  public modalContent: BsModalRef | undefined;
+  public modalContent!: BsModalRef;
+  public eventAlert: EventEmitter<any> = new EventEmitter();
 
   editItemForm : any;
   img: string = '/assets/icons/image.png';
   item: any;
   
+  message!:string;
+  alert:boolean = false;
 
   public event: EventEmitter<any> = new EventEmitter();
   constructor(public bsModalRef: BsModalRef, private productService: ProductService) {
@@ -55,7 +58,15 @@ export class UpdateFormComponent implements OnInit {
       description: this.editItemForm.controls.description.value,
       image: ''
     }
-    await this.productService.update(this.item.idDoc, editData);
+    let message = await this.productService.update(this.item.idDoc, editData);
+    this.bsModalRef.hide();
+    this.alert = true;
+    let emit = {
+      alert: this.alert,
+      message: message
+    }
+    this.eventAlert.emit(emit);
+
     this.bsModalRef.hide();
   }
 

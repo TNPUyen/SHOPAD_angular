@@ -1,17 +1,39 @@
 <div style="width: 100%; display: flex; justify-content: center;">
   <div style="width: 98%; height:100%; ">
+    <!-- alert -->
+    <div class="alert alert-success alert-dismissible fade show" role="alert" *ngIf="alert && isSuccess">
+      {{message}}
+      <button type="button" class="close" data-dismiss="alert" aria-label="Close" (click)="closeAlert()">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+
+    <div class="alert alert-danger alert-dismissible fade show" role="alert" *ngIf="alert && !isSuccess">
+      {{message}}
+      <button type="button" class="close" data-dismiss="alert" aria-label="Close" (click)="closeAlert()">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+    <!-- head -->
     <div class="head-productPage mt-2">
+     <div class="seacrh">
       <nav class="navbar">
-        <input class="form-control" type="text" [(ngModel)]="name" (ngModelChange)="search()"
-          placeholder="Enter product Name">
+        <input class="form-control" type="text" [(ngModel)]="name" (ngModelChange)="searchName()"
+          placeholder="Enter product name">
       </nav>
-      <button class="btn add_btn" (click)="openAdd()">Add product</button>
+
+      <nav class="navbar">
+        <input class="form-control" type="text" [(ngModel)]="category" (ngModelChange)="searchCategory()"
+          placeholder="Enter product category">
+      </nav>
+     </div>
+      <button class="btn add_btn mr-5" (click)="openAdd()">Add product</button>
     </div>
 
     <table class="table">
       <thead>
         <tr>
-          <th scope="col" [appSort]="itemList" data-order="desc" data-name="id" ><i ></i>Id</th>
+          <th scope="col" [appSort]="itemList" data-order="desc" data-name="id"><i></i>Id</th>
           <th scope="col">Image</th>
           <th scope="col" [appSort]="itemList" data-order="desc" data-name="name">Name</th>
           <th scope="col" [appSort]="itemList" data-order="desc" data-name="category">Category</th>
@@ -43,7 +65,7 @@
           <!-- <td class="td_btn"><button class="btn detail-btn"><i class="bi bi-info-circle-fill"></i></button></td> -->
           <!--option column-->
           <td>
-            <button type="button" class="btn update_btn" (click)="openUpdate(item)">Update</button>
+            <button type="button" class="btn update_btn mr-2" (click)="openUpdate(item)">Update</button>
             <button type="button" class="btn btn-danger" (click)="delete(item)">Delete</button>
           </td>
         </tr>
@@ -62,4 +84,3 @@
     </div>
   </div>
 </div>
-

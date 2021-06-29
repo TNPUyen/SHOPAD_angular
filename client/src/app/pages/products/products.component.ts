@@ -20,16 +20,18 @@ export class ProductsComponent implements OnInit {
   totalProduct: any;
   modalContent!: BsModalRef;
   name!: string;
+  category!: string;
+
   sortIcon: string = 'bi bi-caret-down-fill'
 
   page:number = 1;
   itemPerPage:number = 6;
 
-  constructor(private fireStore: AngularFirestore, public productService: ProductService, 
-    private modalService: BsModalService
-    ) { 
-    
-    console.log(this.itemList)
+  alert:boolean = false;
+  message!:string;
+  isSuccess: boolean = false;
+
+  constructor(private fireStore: AngularFirestore, public productService: ProductService, private modalService: BsModalService) { 
   }
 
   ngOnInit(): void {
@@ -48,17 +50,25 @@ export class ProductsComponent implements OnInit {
     //khởi tạo biến để truyền vào ngx-bootstrap modal
     const initialState = {item: item}
     this.modalContent = this.modalService.show(UpdateFormComponent, {initialState});
-    this.modalContent.content.closeBtnName = 'Close'; 
+    this.modalContent.content.eventAlert.subscribe((data:any) => {
+      this.alert = data['alert'];
+      this.message = data['message'];
+      this.settingAlert();
+    });
   }
 
   openAdd(){
     //khởi tạo biến để truyền vào ngx-bootstrap modal
     this.modalContent = this.modalService.show(AddFormComponent);
-    this.modalContent.content.closeBtnName = 'Close'; 
+    this.modalContent.content.eventAlert.subscribe((data:any) => {
+      this.alert = data['alert'];
+      this.message = data['message'];
+      this.settingAlert();
+    });
   }
 
   // filter by product name
-  search(){
+  searchName(){
     if(this.name == ""){
       this.ngOnInit();
     }else{
@@ -66,6 +76,32 @@ export class ProductsComponent implements OnInit {
         return res.name.toLocaleLowerCase().match(this.name.toLocaleLowerCase())
       });
     }
+  }
+
+  searchCategory(){
+    if(this.category == ""){
+      this.ngOnInit();
+    }else{
+      this.itemList = this.itemList?.filter(res => {
+        return res.category.toLocaleLowerCase().match(this.category.toLocaleLowerCase())
+      });
+    }
+  }
+
+  settingAlert(){
+    if(this.message.includes('successful')){
+      this.isSuccess = true;
+      console.log(this.message.includes('successful'))
+    }
+    if(this.alert == true){
+      setTimeout(() => {
+        this.alert = false
+      }, 1500);
+    }
+  }
+
+  closeAlert(){
+    this.alert = false;
   }
 
 }

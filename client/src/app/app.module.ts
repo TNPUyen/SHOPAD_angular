@@ -9,23 +9,19 @@ import { SidebarComponent } from './components/sidebar/sidebar.component';
 import { environment } from 'src/environments/environment';
 import { AngularFireModule } from '@angular/fire';
 import {AngularFirestoreModule} from '@angular/fire/firestore';
-// import { SortDirective } from './directive/sort.directive';
-// import { ModalModule } from 'ngx-bootstrap/modal';
-// import { ShareModule } from './modules/share.module';
+import { HttpClientModule } from '@angular/common/http';
 @NgModule({
   declarations: [
     AppComponent,
     NavbarComponent,
     SidebarComponent,
-    // SortDirective
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     AngularFireModule.initializeApp(environment.firebase),
     AngularFirestoreModule,
-    // ModalModule.forRoot(),
-    // ShareModule
+    HttpClientModule
 
   ],
   providers: [],

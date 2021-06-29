@@ -51,6 +51,12 @@ tbody > tr:hover {background-color: #ddd;}
 .head-productPage{
     display: flex;
     flex-direction: row;
+    justify-content: space-between;
+}
+
+.seacrh{
+    display: flex;
+    flex-direction: row;
 }
 
 .table{

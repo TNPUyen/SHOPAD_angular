@@ -1,0 +1,29 @@
+$success: #198754;
+$danger:#dc3545;
+$black: #212529;
+$primary: #1d1919;
+$dark-primary: #131010;
+
+$yellow: #f8b739;
+$dark-yellow: #eeac28;
+
+$light-yellow: #ffdd93;
+// --------------------------------
+
+.table{
+    margin: 20px 0 0 0;
+    border-radius: 5px;
+    background-color: white;
+}
+
+//custom btn
+.update_btn{
+    color: white;
+    background-color: $primary;
+    border-color: $primary;
+    &:hover{
+        // color: $primary;
+        background-color: $dark-primary;
+        ;
+    }
+}
