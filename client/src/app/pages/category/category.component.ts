@@ -4,6 +4,7 @@ import { BsModalRef, BsModalService } from 'ngx-bootstrap/modal';
 import { Observable } from 'rxjs';
 import { Category, CategoryClass } from 'src/app/models/category.model';
 import { ApiCategoriesService } from 'src/app/services/api-categories.service';
+import { UserService } from 'src/app/services/user.service';
 import { AddCategoryComponent } from './components/add-category/add-category.component';
 import { UpdateCategoryComponent } from './components/update-category/update-category.component';
 
@@ -25,7 +26,7 @@ export class CategoryComponent implements OnInit {
   alert:boolean = false;
   message!:string;
   isSuccess: boolean = false;
-  constructor(private categoryService: ApiCategoriesService, private firestore: AngularFirestore , private modalService: BsModalService) { }
+  constructor(private categoryService: ApiCategoriesService, private firestore: AngularFirestore , private modalService: BsModalService, public userService: UserService) { }
 
   ngOnInit(): void {
     // this.getData();

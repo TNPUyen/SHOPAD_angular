@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { AngularFireAuth } from '@angular/fire/auth';
+import { Router } from '@angular/router';
 import * as firebase from 'firebase';
 @Injectable({
   providedIn: 'root'
@@ -7,11 +8,11 @@ import * as firebase from 'firebase';
 export class UserService {
   public user: any;
 
-  constructor(private fireAuth: AngularFireAuth) { 
+  constructor(private fireAuth: AngularFireAuth, private router: Router) { 
     this.fireAuth.authState.subscribe(async (testUser) => {
       if(testUser){
-        console.log(testUser);
         this.user = testUser;
+        // this.router.navigate(['/admin/products'])
       }else{
         this.user = null;
       }

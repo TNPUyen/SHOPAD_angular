@@ -54,4 +54,5 @@ export class AddFormComponent implements OnInit {
     this.bsModalRef.hide();
   }
 
+  
 }

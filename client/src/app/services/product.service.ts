@@ -1,12 +1,13 @@
 import { Injectable } from '@angular/core';
 import { ProductClass } from '../models/product.model';
 import { AngularFirestore } from '@angular/fire/firestore';
+import { AngularFireStorage } from '@angular/fire/storage';
 
 @Injectable({
   providedIn: 'root',
 })
 export class ProductService {
-  constructor(private fireStore: AngularFirestore) {}
+  constructor(private fireStore: AngularFirestore, private fireStorage: AngularFireStorage) {}
 
   add(newProduct: ProductClass) {
     try {
