@@ -7,6 +7,7 @@ const routes: Routes = [
   { path: '', loadChildren: () => import('./pages/sign-in/sign-in.module').then(m => m.SignInModule) }, 
   { path: 'register', loadChildren: () => import('./pages/register/register.module').then(m => m.RegisterModule) }, 
   { path: 'admin/category', loadChildren: () => import('./pages/category/category.module').then(m => m.CategoryModule), canActivate: [AuthService] },
+  { path: 'admin/detail/:id', loadChildren: () => import('./pages/detail-page/detail-page.module').then(m => m.DetailPageModule), canActivate: [AuthService] },
   { path: '**', loadChildren: () => import('./pages/page-error/page-error.module').then(m => m.PageErrorModule), canActivate: [AuthService] }
 ];
 

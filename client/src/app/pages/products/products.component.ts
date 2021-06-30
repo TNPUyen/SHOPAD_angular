@@ -6,8 +6,10 @@ import { AngularFirestore, AngularFirestoreCollection,} from '@angular/fire/fire
 import { BsModalRef,BsModalService } from 'ngx-bootstrap/modal';
 import { UpdateFormComponent } from './components/update-form/update-form.component';
 import { AddFormComponent } from './components/add-form/add-form.component';
-import { ApiCategoriesService } from 'src/app/services/api-categories.service';
 import { UserService } from 'src/app/services/user.service';
+import { Router } from '@angular/router';
+
+
 @Component({
   selector: 'app-products',
   templateUrl: './products.component.html',
@@ -18,6 +20,7 @@ export class ProductsComponent implements OnInit {
   items!: Observable<any>;
   itemList!: ProductClass[];
   itemListFilter!: ProductClass[];
+  
 
   totalProduct: any;
   modalContent!: BsModalRef;
@@ -36,7 +39,8 @@ export class ProductsComponent implements OnInit {
   constructor(private fireStore: AngularFirestore, 
               public productService: ProductService, 
               private modalService: BsModalService,
-              public userService: UserService) { 
+              public userService: UserService,
+              private router: Router) { 
   }
 
   ngOnInit(): void {
@@ -107,6 +111,10 @@ export class ProductsComponent implements OnInit {
 
   closeAlert(){
     this.alert = false;
+  }
+
+  detail(item:any){
+    this.router.navigate([`/admin/detail/${item.id}`])
   }
 
 }
