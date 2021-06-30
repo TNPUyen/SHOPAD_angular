@@ -9,7 +9,7 @@ import { SidebarComponent } from './components/sidebar/sidebar.component';
 import { environment } from 'src/environments/environment';
 import { AngularFireModule } from '@angular/fire';
 import { AngularFirestoreModule } from '@angular/fire/firestore';
-// import { AngularFireStorageModule } from '@angular/fire/storage';
+import { AngularFireStorageModule } from '@angular/fire/storage';
 import { HttpClientModule } from '@angular/common/http';
 import { ConfirmComponent } from './components/confirm/confirm.component';
 import { ShareModule } from './modules/share.module';
@@ -25,7 +25,7 @@ import { ShareModule } from './modules/share.module';
     AppRoutingModule,
     AngularFireModule.initializeApp(environment.firebase),
     AngularFirestoreModule,
-    // AngularFireStorageModule,
+    AngularFireStorageModule,
     HttpClientModule,
     ShareModule,
   ],

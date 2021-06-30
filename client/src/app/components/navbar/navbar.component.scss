@@ -1,6 +1,7 @@
-// .navbar{
-//     margin: 15px 0 10px 0;
-// }
+$primary: #1d1919;
+$yellow: #f8b739;
+$light-yellow: #ffdd93;
+
 
 .icons-contain{
     display: flex;
@@ -21,11 +22,21 @@
     }
 }
 
-// number of new noti
-// .badge-danger {
-//     color: #fff;
-//     background-color: #e74a3b;
-// }
+a{
+    color: $primary;
+}
+
+.dropdown-item{
+    cursor: pointer;
+
+    &:hover{
+        background-color: $light-yellow;
+    }
+
+    &:active{
+        background-color: $yellow;
+    }
+}
 
 .nav-item .nav-link .badge-counter {
     position: absolute;

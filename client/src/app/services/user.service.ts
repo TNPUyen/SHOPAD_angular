@@ -12,7 +12,7 @@ export class UserService {
     this.fireAuth.authState.subscribe(async (testUser) => {
       if(testUser){
         this.user = testUser;
-        // this.router.navigate(['/admin/products'])
+        this.router.navigate(['/admin/products'])
       }else{
         this.user = null;
       }
